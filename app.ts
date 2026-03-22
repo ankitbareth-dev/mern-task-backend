@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 
 import aiRoutes from "./routes/ai.route";
+import globalErrorHandler from "./middlewares/globalErrorHandler";
 
 const app: Application = express();
 
@@ -21,5 +22,7 @@ app.get("/", (_req: Request, res: Response) => {
     message: "Server is running",
   });
 });
+
+app.use(globalErrorHandler);
 
 export default app;
