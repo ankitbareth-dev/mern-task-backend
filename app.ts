@@ -1,17 +1,21 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 
+import aiRoutes from "./routes/ai.route";
+
 const app: Application = express();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "*",
+    origin: process.env.CLIENT_URL || "http://localhoast:5173",
   }),
 );
 
 app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
+app.use("/api", aiRoutes);
+
+app.get("/", (_req: Request, res: Response) => {
   res.status(200).json({
     success: true,
     message: "Server is running",
