@@ -1,10 +1,13 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
+import morgan from "morgan";
 
 import aiRoutes from "./routes/ai.route";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 
 const app: Application = express();
+
+app.use(morgan("dev"));
 
 app.use(
   cors({

@@ -6,7 +6,9 @@
     "outDir": "./dist",
     "rootDir": ".",
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "dist"]
