@@ -22,9 +22,18 @@ export const askAIService = async (prompt: string) => {
 
   const aiText = data?.choices?.[0]?.message?.content || "No response from AI";
 
+  return { response: aiText };
+};
+
+interface SaveFlowData {
+  prompt: string;
+  response: string;
+}
+
+export const saveFlowService = async (data: SaveFlowData) => {
   const saved = await AIModel.create({
-    prompt,
-    response: aiText,
+    prompt: data.prompt,
+    response: data.response,
   });
 
   return saved;
